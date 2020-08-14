@@ -2,6 +2,7 @@
   "name": "meetup",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rmkraus49.github.io/meetup",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -14,10 +15,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy":
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
   },
   "browserslist": {
     "production": [
