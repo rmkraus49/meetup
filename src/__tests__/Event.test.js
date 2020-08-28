@@ -4,6 +4,7 @@ import Event from '../Event';
 
 describe('Event component - collapsed', () => {
   let EventWrapper;
+
   beforeAll(() => {
     EventWrapper = shallow(<Event />);
   });
