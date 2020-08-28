@@ -28,10 +28,10 @@ async function getOrRenewAccessToken(type, key) {
   let url;
   if (type === 'get') {
     // validate endpoints based on work from exercise 4.2
-    url = 'https://c5usrytrsg.execute-api.us-east-2.amazonaws.com/dev/api/token/'
+    url = 'https://1ez5uql186.execute-api.us-east-2.amazonaws.com/dev/api/token/'
       + key;
   } else if (type === 'renew') {
-    url = 'https://c5usrytrsg.execute-api.us-east-2.amazonaws.com/dev/api/refresh/'
+    url = 'https://1ez5uql186.execute-api.us-east-2.amazonaws.com/dev/api/refresh/'
       + key;
   }
 
