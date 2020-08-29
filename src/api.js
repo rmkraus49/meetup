@@ -27,7 +27,6 @@ function getAccessToken() {
 async function getOrRenewAccessToken(type, key) {
   let url;
   if (type === 'get') {
-    // validate endpoints based on work from exercise 4.2
     url = 'https://1ez5uql186.execute-api.us-east-2.amazonaws.com/dev/api/token/'
       + key;
   } else if (type === 'renew') {
@@ -82,7 +81,7 @@ async function getSuggestions(query) {
   return [];
 }
 
-async function getEvents(lat, lon) {
+async function getEvents(lat, lon, page) {
   if (window.location.href.startsWith('http://localhost')) {
     return mockEvents.events;
   }
@@ -94,6 +93,9 @@ async function getEvents(lat, lon) {
       + token;
     if (lat && lon) {
       url += '&lat=' + lat + '&lon=' + lon;
+    }
+    if (page) {
+      url += '&page=' + page;
     }
     const result = await axios.get(url);
     return result.data.events;

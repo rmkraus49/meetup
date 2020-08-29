@@ -17,6 +17,9 @@ class Event extends Component {
 
   render() {
     const { event } = this.props;
+    if (!event) {
+      return <div>Asking your future friends what's happening...</div>
+    }
     if (this.state.expanded === false) return (
       <div className="event-collapsed">
         <h1 className="event-name">{event.name}</h1>
@@ -28,8 +31,8 @@ class Event extends Component {
         <h1 className="event-name">{event.name}</h1>
         <p className="event-date">{event.local_date}</p>
         <p className="event-time">{event.local_time}</p>
-        <p className="event-address">{event.venue.address_1}</p>
-        <p className="event-city-state">{event.group.localized_location}</p>
+        <p className="event-address">Venue: {event.venue && event.venue.address_1}</p>
+        <p className="event-city-state">City: {event.group.localized_location}</p>
         <p className="event-link">{event.link}</p>
         <button className="collapse-button" onClick={this.handleCollapseClick}>Collapse</button>
       </div>

@@ -23,7 +23,7 @@ describe('<App /> component', () => {
 
   test('render NumberOfEvents', () => {
     expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
-  })
+  });
 });
 
 describe('App integration testing', () => {
@@ -38,7 +38,7 @@ describe('App integration testing', () => {
     AppWrapper.unmount();
   });
 
-  test('change state after get list of events', async () => {
+  test('change state after getting list of events', async () => {
     const AppWrapper = shallow(<App />);
     AppWrapper.instance().updateEvents(1.1, 1.2);
     await AppWrapper.update();
@@ -50,6 +50,15 @@ describe('App integration testing', () => {
     AppWrapper.setState({ events: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }] });
     expect(AppWrapper.find('Event')).toHaveLength(4);
     AppWrapper.unmount();
+  });
+
+  test('update events list based on user input number of events', () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.instance().updateEvents = jest.fn();
+    AppWrapper.instance().forceUpdate();
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventCount = NumberOfEventsWrapper.state('events');
+    expect(AppWrapper.find('Event')).toHaveLength(eventCount);
   });
 
 });

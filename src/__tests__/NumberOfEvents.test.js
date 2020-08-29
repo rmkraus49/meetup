@@ -13,18 +13,18 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('check that default number of events is 30', () => {
-    expect(NumberOfEventsWrapper.state('events')).toBe(30);
+    expect(NumberOfEventsWrapper.state('eventCount')).toBe(30);
   });
 
   test('render input value correctly', () => {
-    const events = NumberOfEventsWrapper.state('events');
+    const events = NumberOfEventsWrapper.state('eventCount');
     expect(NumberOfEventsWrapper.find('.event-count-input').prop('value')).toBe(events);
   });
 
   test('change state when input changes', () => {
     const eventObject = { target: { value: 60 } };
     NumberOfEventsWrapper.find('.event-count-input').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('events')).toBe(60);
+    expect(NumberOfEventsWrapper.state('eventCount')).toBe(60);
   });
 
 });
