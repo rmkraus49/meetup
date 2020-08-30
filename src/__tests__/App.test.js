@@ -52,13 +52,11 @@ describe('App integration testing', () => {
     AppWrapper.unmount();
   });
 
-  test('update events list based on user input number of events', () => {
+  test('call updateEvents function with correct page number based on number of events input', () => {
     const AppWrapper = mount(<App />);
     AppWrapper.instance().updateEvents = jest.fn();
     AppWrapper.instance().forceUpdate();
-    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const eventCount = NumberOfEventsWrapper.state('events');
-    expect(AppWrapper.find('Event')).toHaveLength(eventCount);
+    AppWrapper.find('.event-count-input').simulate('change', { target: { value: 10 } });
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
   });
-
 });

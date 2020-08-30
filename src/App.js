@@ -14,19 +14,12 @@ class App extends Component {
   }
 
   updateEvents = (lat, lon, page) => {
-    console.log('starting with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
     if (lat && lon) {
-      console.log('updating with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
       getEvents(lat, lon, this.state.eventCount).then(events => this.setState({ events, lat, lon }));
-      console.log('ran with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
     } else if (page) {
-      console.log('updating with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
       getEvents(this.state.lat, this.state.lon, page).then(events => this.setState({ events, eventCount: page }));
-      console.log('ran with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
     } else {
-      console.log('updating with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
       getEvents(this.state.lat, this.state.lon, this.state.eventCount).then(events => this.setState({ events }));
-      console.log('ran with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
     }
   }
 
