@@ -8,12 +8,12 @@ class NumberOfEvents extends Component {
   handleEventCountChange = (event) => {
     const value = event.target.value;
     this.setState({ eventCount: value });
-    this.props.updateCount(this.state.eventCount);
+    this.props.updateEvents(null, null, value);
   }
 
   render() {
     return (
-      <div>
+      <div className="NumberOfEvents" >
         <input
           className="event-count-input"
           type="number"
@@ -23,7 +23,6 @@ class NumberOfEvents extends Component {
       </div>
     )
   }
-
 }
 
 export default NumberOfEvents;

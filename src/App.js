@@ -9,14 +9,25 @@ class App extends Component {
   state = {
     events: [],
     eventCount: 30,
+    lat: null,
+    lon: null,
   }
 
   updateEvents = (lat, lon, page) => {
-    getEvents(lat, lon, page).then(events => this.setState({ events }));
-  }
-
-  updateCount = (count) => {
-    this.setState({ eventCount: count });
+    console.log('starting with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
+    if (lat && lon) {
+      console.log('updating with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
+      getEvents(lat, lon, this.state.eventCount).then(events => this.setState({ events, lat, lon }));
+      console.log('ran with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
+    } else if (page) {
+      console.log('updating with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
+      getEvents(this.state.lat, this.state.lon, page).then(events => this.setState({ events, eventCount: page }));
+      console.log('ran with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
+    } else {
+      console.log('updating with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
+      getEvents(this.state.lat, this.state.lon, this.state.eventCount).then(events => this.setState({ events }));
+      console.log('ran with lat ' + lat + ' and lon ' + lon + ' and page ' + page);
+    }
   }
 
   componentDidMount() {
@@ -27,7 +38,7 @@ class App extends Component {
     return (
       <div className="App">
         <CitySearch className="CitySearch" updateEvents={this.updateEvents} />
-        <NumberOfEvents className="NumberOfEvents" updateCount={this.updateCount} />
+        <NumberOfEvents className="NumberOfEvents" updateEvents={this.updateEvents} />
         <EventList className="EventList" events={this.state.events} />
       </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import NumberOfEvents from '../NumberOfEvents';
 
 describe('<NumberOfEvents /> component', () => {
@@ -22,6 +22,7 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('change state when input changes', () => {
+    NumberOfEventsWrapper = mount(<NumberOfEvents />);
     const eventObject = { target: { value: 60 } };
     NumberOfEventsWrapper.find('.event-count-input').simulate('change', eventObject);
     expect(NumberOfEventsWrapper.state('eventCount')).toBe(60);
