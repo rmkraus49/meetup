@@ -3,7 +3,6 @@ import './App.css';
 
 class Event extends Component {
   state = {
-    event: {},
     expanded: false
   }
 
@@ -18,6 +17,7 @@ class Event extends Component {
   render() {
     const { event } = this.props;
     if (!event) {
+      console.log('no event found');
       return <div>Asking your future friends what's happening...</div>
     }
     if (this.state.expanded === false) return (
