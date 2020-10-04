@@ -18,6 +18,7 @@ module.exports.getAccessToken = async (event) => {
     headers: {
       'Access-Control-Allow-Headers': '*',
       'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
     },
     body: JSON.stringify({
       access_token: info.data.access_token,
